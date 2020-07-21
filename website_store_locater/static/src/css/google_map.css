@@ -1,0 +1,44 @@
+body{
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+}
+.google_map.wrapper {
+    margin: 0 auto;
+    width: 1175px;
+}
+.location-menu {
+    padding: 20px 0 10px 0;
+}
+.google_map ol, .google_map ul {
+    list-style: none;
+}
+.location-menu ul li {
+    display: inline-block;
+    text-transform: uppercase;
+    margin-right: 15px;
+    font-size: 15px;
+}
+.location-menu ul li.current-menu-item a:hover {
+    color: #000;
+}
+.location-menu ul li.current-menu-item a {
+    color: #ae8e59;
+}
+.lpr-location-address {
+    color: #646464;
+    font-size: 15px;
+}
+#menu-location-menu > li > a.active{
+    color: black;
+}/*
+#menu-location-menu > li > a{
+    color: #f5b5b5;
+}*/
+#search_place{
+    width:100%;
+    height:45px;
+    border-radius: 20px;
+    border: none;
+    padding-left: 10px;
+}

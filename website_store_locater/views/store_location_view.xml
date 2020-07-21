@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data>
+
+      <!--form view Store Location-->
+      <record model="ir.ui.view" id="store_location_form_view">
+            <field name="name">store.location.form</field>
+            <field name="model">store.location</field>
+            <field name="arch" type="xml">
+                <form string="Location Form">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name"/>
+                                <label for="address" string="Address"/>
+                                    <div>
+                                        <div class="o_address_format">
+                                            <field name="street" placeholder="Street..." class="o_address_street"
+                                                   required='1'/>
+                                            <field name="street2" placeholder="Street 2..."
+                                                   class="o_address_street"/>
+                                            <field name="city" placeholder="City" class="o_address_city"
+                                                   required=''/>
+                                            <field name="state_id" class="o_address_state" placeholder="Province"
+                                                   required='1'/>
+                                            <field name="zip" placeholder="ZIP" class="o_address_zip"
+                                                   required='0'/>
+                                        </div>
+                                    </div>
+                                <field name="area"/>
+                            </group>
+                            <group>
+                                <field name="lat"/>
+                                <field name="long"/>
+                                <field name="store_id"/>
+                                <field name="store_image" widget='image' class="oe_avatar"/>
+                                <field name="markers_id" invisible="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <!--tree view Store Location-->
+    <record model="ir.ui.view" id="store_location_tree_view">
+        <field name="name">store.location.tree</field>
+        <field name="model">store.location</field>
+        <field name="arch" type="xml">
+            <tree string="Location Tree">
+                <field name="name"/>
+                <field name="area"/>
+                <field name="lat"/>
+                <field name="long"/>
+
+            </tree>
+        </field>
+    </record>
+
+    <!--action-->
+    <record model="ir.actions.act_window" id="store_location_action">
+        <field name="name">Store Location</field>
+        <field name="res_model">store.location</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="store_locator" name="Store Locations" parent="main_location" action="store_location_action"/>
+
+    </data>
+</odoo>

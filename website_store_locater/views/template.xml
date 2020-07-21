@@ -1,0 +1,83 @@
+<odoo>
+
+    <template id="google_map_template" name="Store Location">
+        <t t-call="website.layout">
+            <section>
+                <div class="oe_structure" id="oe_structure_website_sale_products_1"/>
+                <div class="oe_structure" style="background:#f1f1f1">
+                    <div class="google_map wrapper">
+                        <div class="row">
+                            <div class="col-md-2 col-sm-2"></div>
+                            <div class="col-md-8 col-sm-8 pt32 text-center">
+                                <input id="search_place" type="text" placeholder="Search Place"/>
+                                <div id="product_search_results"/>
+                            </div>
+                        </div>
+                        <div class="location-page wow fadeInUp pt32">
+                            <t t-if="store_country">
+                                <h2>Store Locator In <t t-esc="store_country.name"/></h2>
+                            </t>
+                            <input id="store_country_id" type="hidden" t-att-value="store_country_id"/>
+                        </div>
+                        <div class="location-menu">
+                            <ul id="menu-location-menu" class="menu" style="padding-left:0;">
+                                <t t-foreach="countries" t-as="country">
+                                    <li>
+                                        <a t-attf-class="{{'active' if country.id == store_country_id else ''}}"
+                                           t-attf-href="/retail/#{slug(country)}">
+                                            <t t-esc="country.name"/>
+                                        </a>
+                                    </li>
+                                </t>
+                            </ul>
+                        </div>
+                        <div class="row pb48">
+                            <div class="col-md-4 col-sm-4 col-4" style="height:450px;overflow-y: scroll;">
+                                <div class="row">
+                                    <t t-foreach="locations" t-as="location">
+                                        <div class="col-md-12">
+                                            <div class="card mb8 map_locator" id="card_id">
+                                                <h2 class="font-weight-bold m-0 ml-3 mt8" style="font-size:15px;">
+                                                    <t t-esc="location.name"/>
+                                                </h2>
+                                                <h2 class="lpr-location-address m-0 ml-3">
+                                                    <t t-esc="location.city"/>
+                                                </h2>
+                                                <div class="ml-3 mb8">
+                                                    Phone
+                                                    <span>
+                                                        <t t-esc="location.phone"/>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </t>
+                                </div>
+                            </div>
+                            <div class="col-md-8 col-sm-8 col-8">
+                                <!--                                <img src="/iq_website_store_locater/static/src/img/map.png" style="width:100%;height: 450px;"/>-->
+                                <div id="googleMap" style="width:100%;height: 450px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="oe_structure mb32" id="oe_structure_website_sale_products_2"/>
+            </section>
+        </t>
+    </template>
+
+
+    <template id="productsSearchBarSolution">
+        <div class="dropdown-menu product_main_div show w-100">
+            <a t-foreach="products" t-as="product" class="dropdown-item p-2 text-wrap">
+                <div class="media align-items-center o_search_product_item map_locator"
+                     t-att-data-markerid="product['markers_id']">
+                    <div class="media-body px-3">
+                        <h6 style="font-size: 12px;" t-esc="product['name']"/>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </template>
+
+</odoo>

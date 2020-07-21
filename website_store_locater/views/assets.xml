@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!-- Assets: scss, css, js -->
+  <template id="assets_front" inherit_id="web.assets_frontend">
+    <xpath expr="." position="inside">
+      <link href="/website_store_locater/static/src/css/google_map.css" rel="stylesheet"/>
+        <script type="text/javascript" src="/website_store_locater/static/src/js/google_map.js"></script>
+    </xpath>
+  </template>
+</odoo>
