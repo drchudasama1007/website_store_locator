@@ -8,7 +8,7 @@
 {
     'name': 'Website Store Locater',
     'category': 'Website',
-    'summary': 'Website Advance Product Search',
+    'summary': 'Website Store Locater',
 
     'version': '0.1',
     'description': """
